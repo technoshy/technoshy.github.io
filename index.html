@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A quiet, focused todo list for everyday momentum.">
+  <title>quietlist — a gentle todo list</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="todo-page">
+  <div class="todo-shell">
+    <header class="todo-header">
+      <a class="todo-brand" href="/">quietlist<span>.</span></a>
+      <div class="todo-header-meta"><span class="status-dot"></span><span id="today-label"></span><button class="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme"><span class="theme-icon" aria-hidden="true">☼</span></button></div>
+    </header>
+    <main class="todo-main">
+      <section class="todo-intro" aria-labelledby="todo-title"><p class="eyebrow">A little room to think</p><h1 id="todo-title">Things to<br><em>do.</em></h1><p class="todo-subtitle">Keep the day light. Give each task somewhere to land.</p></section>
+      <section class="todo-board" aria-label="Todo list">
+        <form class="add-task" id="add-task-form"><label class="sr-only" for="task-input">New task</label><input id="task-input" name="task" type="text" maxlength="120" placeholder="What needs doing?" autocomplete="off" required><button class="add-button" type="submit">Add task <span aria-hidden="true">+</span></button></form>
+        <div class="todo-toolbar"><div class="filters" role="group" aria-label="Filter tasks"><button class="filter is-active" type="button" data-filter="all">All</button><button class="filter" type="button" data-filter="active">Open</button><button class="filter" type="button" data-filter="completed">Done</button></div><button class="clear-button" id="clear-completed" type="button">Clear done</button></div>
+        <div class="task-list" id="task-list" aria-live="polite"></div>
+        <div class="todo-footer"><span id="task-count">0 open</span><span>Saved on this device</span></div>
+      </section>
+    </main>
+  </div>
+  <script src="{{ url_for('static', filename='theme.js') }}"></script>
+</body>
+</html>
