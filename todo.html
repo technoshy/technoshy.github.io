@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body {
+        background: linear-gradient(180deg, #f5f7f3 0%, #edf3ef 100%);
+      }
+      .todo-card {
+        max-width: 700px;
+        margin: 4rem auto;
+        border-radius: 1rem;
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.08);
+      }
+      .todo-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .todo-item.completed .todo-text {
+        text-decoration: line-through;
+        color: #6c757d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card todo-card p-4 p-md-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <p class="text-success fw-bold text-uppercase small mb-1">Planning</p>
+            <h1 class="h2 mb-0">Todo List</h1>
+          </div>
+          <a href="index.html" class="btn btn-outline-dark btn-sm">Back</a>
+        </div>
+
+        <div class="input-group mb-4">
+          <input id="new-todo" type="text" class="form-control" placeholder="Add a new task" aria-label="Add a new task">
+          <button class="btn btn-primary" type="button" onclick="addTodo()">Add</button>
+        </div>
+
+        <ul id="todo-list" class="list-group list-group-flush"></ul>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function getTodos() {
+        return JSON.parse(localStorage.getItem('todos') || '[]');
+      }
+
+      function saveTodos(todos) {
+        localStorage.setItem('todos', JSON.stringify(todos));
+      }
+
+      function renderTodos() {
+        const todoList = document.getElementById('todo-list');
+        const todos = getTodos();
+        todoList.innerHTML = '';
+
+        if (!todos.length) {
+          todoList.innerHTML = '<li class="list-group-item text-secondary">No tasks yet. Add one above.</li>';
+          return;
+        }
+
+        todos.forEach((todo, index) => {
+          const li = document.createElement('li');
+          li.className = `list-group-item todo-item ${todo.done ? 'completed' : ''}`;
+
+          const left = document.createElement('div');
+          left.className = 'd-flex align-items-center gap-3';
+
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.checked = todo.done;
+          checkbox.className = 'form-check-input';
+          checkbox.setAttribute('aria-label', `Mark ${todo.text} as done`);
+          checkbox.addEventListener('change', () => toggleTodo(index));
+
+          const text = document.createElement('span');
+          text.className = 'todo-text';
+          text.textContent = todo.text;
+
+          left.appendChild(checkbox);
+          left.appendChild(text);
+
+          const deleteBtn = document.createElement('button');
+          deleteBtn.className = 'btn btn-outline-danger btn-sm';
+          deleteBtn.textContent = 'Remove';
+          deleteBtn.addEventListener('click', () => removeTodo(index));
+
+          li.appendChild(left);
+          li.appendChild(deleteBtn);
+          todoList.appendChild(li);
+        });
+      }
+
+      function addTodo() {
+        const input = document.getElementById('new-todo');
+        const text = input.value.trim();
+
+        if (!text) return;
+
+        const todos = getTodos();
+        todos.push({ text, done: false });
+        saveTodos(todos);
+        renderTodos();
+        input.value = '';
+        input.focus();
+      }
+
+      function toggleTodo(index) {
+        const todos = getTodos();
+        todos[index].done = !todos[index].done;
+        saveTodos(todos);
+        renderTodos();
+      }
+
+      function removeTodo(index) {
+        const todos = getTodos();
+        todos.splice(index, 1);
+        saveTodos(todos);
+        renderTodos();
+      }
+
+      document.getElementById('new-todo').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+          addTodo();
+        }
+      });
+
+      renderTodos();
+    </script>
+  </body>
+</html>
