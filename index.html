@@ -8,19 +8,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <a class="wordmark" href="/" aria-label="Technoshy home">technoshy<span class="fox">🦊</span><span class="cursor">_</span></a>
+      <a class="wordmark" href="#hero-title" aria-label="Technoshy home">technoshy<span class="fox">🦊</span><span class="cursor">_</span></a>
       <nav aria-label="Main navigation">
         <a href="#work">Work</a>
         <a href="#skills">Skills</a>
         <a href="#approach">Approach</a>
-        <a href="{{ url_for('about') }}">About</a>
-        <a href="{{ url_for('todo') }}">Todo</a>
+        <a href="#approach">About</a>
+        <a href="#work">Todo</a>
         <a href="#contact" class="nav-contact">Say hello <span aria-hidden="true">↗</span></a>
         <button class="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
           <span class="theme-icon" aria-hidden="true">☼</span>
@@ -46,21 +45,21 @@
       <section class="work-section" id="work" aria-labelledby="work-title">
         <div class="section-heading"><p class="eyebrow">01 / Selected work</p><h2 id="work-title">A few things<br>made with care.</h2></div>
         <div class="project-list">
-          <a class="project project-a" href="https://github.com/afheisleycook/desktopjournal" target="_blank" rel="noopener noreferrer"><div class="project-number">01</div><div class="project-name"><span>Desktop Journal</span></div><p>Private notes for quiet minds.</p></a>
-          <a class="project project-b" href="https://github.com/afheisleycook/tictactoe" target="_blank" rel="noopener noreferrer"><div class="project-number">02</div><div class="project-name"><span>Tic Tac Toe</span></div><p>A playful classic with a soft UI.</p></a>
-          <a class="project project-c" href="https://github.com/afheisleycook/calculator" target="_blank" rel="noopener noreferrer"><div class="project-number">03</div><div class="project-name"><span>Calculator</span></div><p>A clean, simple tool for everyday use.</p></a>
+          <a class="project project-a" href="https://github.com/afheisleycook/desktopjournal" target="_blank" rel="noopener noreferrer"><div class="project-number">01</div><div class="project-name"><span>Desktop Journal</span><small>A quiet journal app built with Python and Qt.</small></div><div class="project-type">Python / Desktop</div><span class="project-arrow" aria-hidden="true">↗</span></a>
+          <a class="project project-b" href="https://github.com/afheisleycook/tictactoe" target="_blank" rel="noopener noreferrer"><div class="project-number">02</div><div class="project-name"><span>Tic Tac Toe</span><small>A small Python game with a simple setup.</small></div><div class="project-type">Python / Game</div><span class="project-arrow" aria-hidden="true">↗</span></a>
+          <a class="project project-c" href="https://github.com/afheisleycook/calculator" target="_blank" rel="noopener noreferrer"><div class="project-number">03</div><div class="project-name"><span>Calculator</span><small>A Java calculator project for everyday arithmetic.</small></div><div class="project-type">Java / Utility</div><span class="project-arrow" aria-hidden="true">↗</span></a>
         </div>
       </section>
       <section class="skills-section" id="skills" aria-labelledby="skills-title">
         <div class="section-heading"><p class="eyebrow">02 / Skills</p><h2 id="skills-title">Tools for<br><em>quiet momentum.</em></h2></div>
-        <div class="skills-grid"><article class="skill-feature skill-python"><span class="skill-mark">Py</span><div><h3>Python</h3><p>Small applications, automation, games, and desktop tools that stay friendly to use.</p></div></article></div>
+        <div class="skills-grid"><article class="skill-feature skill-python"><span class="skill-mark">Py</span><div><h3>Python</h3><p>Small applications, automation, games, and desktop tools that stay readable as they grow.</p></div><span class="skill-index">01</span></article><article class="skill-feature skill-linux"><span class="skill-mark">$&gt;_</span><div><h3>Linux</h3><p>Comfortable in the terminal, working with files, processes, packages, Git, and everyday system setup.</p></div><span class="skill-index">02</span></article></div>
         <div class="skill-list" aria-label="Additional skills"><span>HTML / CSS</span><span>JavaScript</span><span>Java</span><span>Git / GitHub</span><span>Qt</span><span>Responsive design</span></div>
       </section>
-      <section class="approach-section" id="approach" aria-labelledby="approach-title"><p class="eyebrow">03 / The approach</p><div class="approach-grid"><h2 id="approach-title">Technology should<br><em>feel gentle.</em></h2><p>I like building interfaces and tools that are calm, practical, and welcoming. My favorite projects are small, useful, and polished just enough to feel human.</p></div></section>
-      <section class="contact-section" id="contact" aria-labelledby="contact-title"><p class="eyebrow">03 / Start a conversation</p><h2 id="contact-title">Have a good<br><em>quiet idea?</em></h2><div class="contact-card"><p>Reach out if you'd like to collaborate, share an idea, or just say hello.</p><a class="button button-secondary" href="mailto:hello@technoshy.dev">Send a note</a></div></section>
+      <section class="approach-section" id="approach" aria-labelledby="approach-title"><p class="eyebrow">03 / The approach</p><div class="approach-grid"><h2 id="approach-title">Technology should<br><em>feel like home.</em></h2><div class="approach-text"><p>Big headphones on, notifications off. Good code can be quiet, useful, and kind to the person on the other side of the screen.</p><div class="principles"><div><span>01</span><strong>Keep it cozy</strong></div><div><span>02</span><strong>Make it legible</strong></div><div><span>03</span><strong>Ship gently</strong></div></div></div></div></section>
+      <section class="contact-section" id="contact" aria-labelledby="contact-title"><p class="eyebrow">03 / Start a conversation</p><h2 id="contact-title">Have a good<br><em>quiet idea?</em></h2><div class="contact-methods"><a class="contact-link" href="mailto:aheisleycook@gmail.com">aheisleycook@gmail.com <span aria-hidden="true">↗</span></a><a class="contact-link" href="https://matrix.to/#/@technowizard:keimai.space" target="_blank" rel="noopener noreferrer">@technowizard:keimai.space <span aria-hidden="true">↗</span></a><a class="contact-link" href="tel:8184261200">818-426-1200 <span aria-hidden="true">↗</span></a></div></section>
     </main>
     <footer class="footer"><span>© nt</span><span>Made with intention in the internet</span><a href="#hero-title">Back to top ↑</a></footer>
   </div>
-  <script src="{{ url_for('static', filename='theme.js') }}"></script>
+  <script src="static/theme.js"></script>
 </body>
 </html>
