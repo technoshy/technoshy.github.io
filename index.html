@@ -345,6 +345,72 @@
       font-style: italic;
       color: var(--green);
     }
+
+    .bio-section {
+      padding: 82px 40px;
+      background: var(--bg);
+    }
+
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .bio-card {
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+      box-shadow: 0 8px 32px var(--shadow);
+    }
+
+    .bio-card.feature {
+      background: linear-gradient(135deg, var(--surface), rgba(185, 240, 194, 0.25));
+    }
+
+    .bio-card p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .bio-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .bio-card .sigil {
+      display: inline-block;
+      margin-bottom: 18px;
+      font: 600 12px "DM Mono", monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+
+    .bio-facts {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .bio-facts li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .bio-facts li::before {
+      content: "✦";
+      color: var(--green);
+      font-size: 16px;
+    }
     
     .work-section {
       padding: 82px 40px;
@@ -563,6 +629,7 @@
         font-size: 36px;
       }
       
+      .bio-section,
       .work-section,
       .skills-section,
       .approach-section,
@@ -570,6 +637,7 @@
         padding: 64px 24px;
       }
       
+      .bio-grid,
       .skills-grid,
       .approach-grid {
         grid-template-columns: 1fr;
@@ -591,6 +659,7 @@
     <header class="topbar">
       <a class="wordmark" href="#hero-title" aria-label="Technoshy home">technoshy<span class="fox">🦊</span><span class="cursor">_</span></a>
       <nav aria-label="Main navigation">
+        <a href="#bio">Bio</a>
         <a href="#work">Work</a>
         <a href="#skills">Skills</a>
         <a href="#approach">About</a>
@@ -619,6 +688,26 @@
       </section>
 
       <div class="ticker" aria-hidden="true"><div class="ticker-track">TERMINAL DWELLER <span>+</span> SOFT SYSTEMS <span>+</span> SMALL JOYS <span>+</span> TERMINAL DWELLER <span>+</span> SOFT SYSTEMS</div></div>
+
+      <section class="bio-section" id="bio" aria-labelledby="bio-title">
+        <div class="section-heading"><p class="eyebrow">01 / Bio</p><h2 id="bio-title">A fox in the code den,<br><em>quiet but alive.</em></h2></div>
+        <div class="bio-grid">
+          <div class="bio-card feature">
+            <span class="sigil">technoshy // fox</span>
+            <p>I’m Technoshy, a soft-spoken fox who builds digital things from the comfort of a terminal window and a cup of coffee.</p>
+            <p>I like calm interfaces, thoughtful systems, and tools that feel like they were made by a person who cares about the user—not just the output.</p>
+          </div>
+          <div class="bio-card">
+            <span class="sigil">traits</span>
+            <p>Introverted, observant, and quietly persistent. I care about small details, resilient design, and creating things that feel gentle to use.</p>
+            <ul class="bio-facts">
+              <li>Lives in the terminal and the browser</li>
+              <li>Builds small tools with intention</li>
+              <li>Prefers quiet systems over loud ones</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
       <section class="work-section" id="work" aria-labelledby="work-title">
         <div class="section-heading"><p class="eyebrow">01 / Selected work</p><h2 id="work-title">A few things<br>made with care.</h2></div>
