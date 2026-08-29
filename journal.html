@@ -3,53 +3,185 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Journal</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Journal — technoshy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+      :root {
+        --bg: #f2f4ee;
+        --surface: #fbfcf8;
+        --ink: #18221d;
+        --muted: #5d6961;
+        --line: #cbd3cb;
+        --green: #245d3f;
+        --mint: #b9f0c2;
+        --acid: #e0fb6a;
+        --coral: #ff9275;
+        --shadow: rgba(24, 34, 29, 0.12);
+      }
+
+      body.dark {
+        --bg: #0f1117;
+        --surface: #161b22;
+        --ink: #e6edf3;
+        --muted: #8b949e;
+        --line: #30363d;
+        --shadow: rgba(0, 0, 0, 0.4);
+      }
+
+      * { box-sizing: border-box; }
+
       body {
-        background: linear-gradient(180deg, #f5f7f3 0%, #edf3ef 100%);
+        margin: 0;
+        min-width: 320px;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Space Grotesk", sans-serif;
+        transition: background-color 0.3s, color 0.3s;
       }
-      .journal-card {
-        max-width: 760px;
-        margin: 4rem auto;
-        border-radius: 1rem;
-        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.08);
+
+      a { color: inherit; text-decoration: none; transition: opacity 0.2s; }
+      a:hover { opacity: 0.7; }
+
+      .site-shell { display: flex; flex-direction: column; min-height: 100vh; }
+      main { flex: 1; }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        height: 82px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 0 40px;
+        border-bottom: 1px solid var(--line);
+        background: var(--surface);
       }
-      .entry-card {
-        border-radius: 0.75rem;
+
+      .wordmark { font-weight: 600; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+      .wordmark .fox { font-size: 20px; }
+      .wordmark .cursor { display: inline-block; animation: blink 1s infinite; }
+      @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+
+      nav { display: flex; align-items: center; gap: 32px; font-size: 14px; font-weight: 500; }
+      nav a { position: relative; }
+      nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--green); transition: width 0.3s; }
+      nav a:hover::after { width: 100%; }
+      .nav-contact { padding: 8px 16px; border: 1px solid var(--line); border-radius: 4px; background: var(--green); color: white; }
+      .nav-contact::after { display: none; }
+
+      .theme-toggle { background: none; border: none; font-size: 18px; cursor: pointer; padding: 8px; display: flex; align-items: center; justify-content: center; transition: opacity 0.2s; }
+      .theme-toggle:hover { opacity: 0.6; }
+
+      .journal-section { padding: 64px 40px; max-width: 760px; margin: 0 auto; }
+      .eyebrow { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 0; }
+      .journal-section h1 { font-size: 40px; font-weight: 700; margin: 16px 0 40px; }
+      .journal-section h1 em { font-style: italic; color: var(--green); }
+
+      .composer { padding: 24px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); margin-bottom: 32px; }
+      .composer input, .composer textarea {
+        width: 100%;
+        padding: 12px 14px;
+        margin-bottom: 12px;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: inherit;
+        font-size: 14px;
+        resize: vertical;
       }
-      .entry-date {
-        font-size: 0.8rem;
-        color: #6c757d;
+      .composer input:focus, .composer textarea:focus { outline: none; border-color: var(--green); }
+
+      .button { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border: 1px solid var(--line); border-radius: 4px; font-weight: 600; font-size: 14px; transition: all 0.3s; cursor: pointer; }
+      .button-primary { background: var(--green); color: white; border-color: var(--green); }
+      .button-primary:hover { background: #1d4a32; opacity: 1; }
+      .button-outline { background: transparent; color: var(--ink); }
+      .button-outline:hover { border-color: var(--green); opacity: 1; }
+
+      #entry-list { display: flex; flex-direction: column; gap: 16px; }
+      .entry-card { padding: 24px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); transition: all 0.3s; }
+      .entry-card:hover { border-color: var(--green); box-shadow: 0 8px 32px var(--shadow); }
+      .entry-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+      .entry-title { font-weight: 600; font-size: 18px; margin: 0 0 4px; }
+      .entry-date { font-size: 12px; color: var(--muted); margin: 0; }
+      .entry-text { font-size: 14px; line-height: 1.6; color: var(--muted); white-space: pre-wrap; margin: 16px 0 0; }
+      .entry-remove {
+        background: none;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 600;
+        padding: 6px 10px;
+        cursor: pointer;
+        flex-shrink: 0;
       }
-      .entry-text {
-        white-space: pre-wrap;
+      .entry-remove:hover { border-color: var(--coral); color: var(--coral); opacity: 1; }
+      .empty-state { color: var(--muted); font-size: 14px; }
+
+      .footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 18px 40px; border-top: 1px solid var(--line); background: var(--surface); font-size: 12px; color: var(--muted); }
+
+      @media (max-width: 768px) {
+        .topbar { padding: 0 24px; height: 64px; }
+        nav { gap: 16px; font-size: 12px; }
+        .journal-section { padding: 40px 24px; }
+        .journal-section h1 { font-size: 28px; }
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="card journal-card p-4 p-md-5">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-          <div>
-            <p class="text-success fw-bold text-uppercase small mb-1">Reflections</p>
-            <h1 class="h2 mb-0">My Journal</h1>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="wordmark" href="index.html" aria-label="Technoshy home">technoshy<span class="fox">🦊</span><span class="cursor">_</span></a>
+        <nav aria-label="Main navigation">
+          <a href="index.html#work">Work</a>
+          <a href="index.html#skills">Skills</a>
+          <a href="index.html#approach">About</a>
+          <a href="todo.html">Todo</a>
+          <a href="journal.html">Journal</a>
+          <a href="index.html#contact" class="nav-contact">Say hello <span aria-hidden="true">↗</span></a>
+          <button class="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch theme">
+            <span class="theme-icon" aria-hidden="true">☼</span>
+          </button>
+        </nav>
+      </header>
+
+      <main>
+        <section class="journal-section" aria-labelledby="journal-title">
+          <p class="eyebrow">Reflections</p>
+          <h1 id="journal-title">My <em>journal.</em></h1>
+
+          <div class="composer">
+            <input id="entry-title" type="text" placeholder="Title">
+            <textarea id="entry-text" rows="4" placeholder="Write what's on your mind..."></textarea>
+            <button class="button button-primary" type="button" onclick="addEntry()">Save entry</button>
           </div>
-          <a href="index.html" class="btn btn-outline-dark btn-sm">Back</a>
-        </div>
 
-        <div class="mb-4">
-          <input id="entry-title" type="text" class="form-control mb-2" placeholder="Title">
-          <textarea id="entry-text" class="form-control mb-2" rows="4" placeholder="Write what's on your mind..."></textarea>
-          <button class="btn btn-primary" type="button" onclick="addEntry()">Save entry</button>
-        </div>
+          <div id="entry-list"></div>
+        </section>
+      </main>
 
-        <div id="entry-list" class="d-flex flex-column gap-3"></div>
-      </div>
+      <footer class="footer"><span>© nt</span><span>Made with intention in the internet</span><a href="index.html#hero-title">Back to top ↑</a></footer>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+      const themeToggle = document.querySelector('.theme-toggle');
+      const themeIcon = document.querySelector('.theme-icon');
+      function setTheme(theme) {
+        const isDark = theme === 'dark';
+        document.body.classList.toggle('dark', isDark);
+        themeIcon.textContent = isDark ? '☾' : '☼';
+        themeToggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+        localStorage.setItem('technoshy-theme', theme);
+      }
+      const savedTheme = localStorage.getItem('technoshy-theme');
+      if (savedTheme === 'dark' || savedTheme === 'light') setTheme(savedTheme);
+      themeToggle.addEventListener('click', () => setTheme(document.body.classList.contains('dark') ? 'light' : 'dark'));
+
       function getEntries() {
         return JSON.parse(localStorage.getItem('journalEntries') || '[]');
       }
@@ -64,29 +196,29 @@
         entryList.innerHTML = '';
 
         if (!entries.length) {
-          entryList.innerHTML = '<p class="text-secondary mb-0">No entries yet. Write your first one above.</p>';
+          entryList.innerHTML = '<p class="empty-state">No entries yet. Write your first one above.</p>';
           return;
         }
 
         entries.forEach((entry, index) => {
           const card = document.createElement('div');
-          card.className = 'card entry-card p-3';
+          card.className = 'entry-card';
 
           const header = document.createElement('div');
-          header.className = 'd-flex justify-content-between align-items-start gap-2';
+          header.className = 'entry-header';
 
           const titleWrap = document.createElement('div');
           const title = document.createElement('h2');
-          title.className = 'h5 mb-1';
+          title.className = 'entry-title';
           title.textContent = entry.title || 'Untitled';
           const date = document.createElement('p');
-          date.className = 'entry-date mb-2';
+          date.className = 'entry-date';
           date.textContent = entry.date;
           titleWrap.appendChild(title);
           titleWrap.appendChild(date);
 
           const deleteBtn = document.createElement('button');
-          deleteBtn.className = 'btn btn-outline-danger btn-sm';
+          deleteBtn.className = 'entry-remove';
           deleteBtn.textContent = 'Remove';
           deleteBtn.addEventListener('click', () => removeEntry(index));
 
@@ -94,7 +226,7 @@
           header.appendChild(deleteBtn);
 
           const text = document.createElement('p');
-          text.className = 'entry-text mb-0';
+          text.className = 'entry-text';
           text.textContent = entry.text;
 
           card.appendChild(header);
