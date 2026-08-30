@@ -594,6 +594,34 @@
       font-size: 20px;
       color: var(--green);
     }
+
+    .community-label {
+      display: block;
+      margin-top: 26px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .community-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .community-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      font-size: 13px;
+      color: var(--ink);
+    }
     
     /* Footer */
     .footer {
@@ -781,6 +809,13 @@
       <section class="contact-section" id="contact" aria-labelledby="contact-title">
         <p class="eyebrow">04 / Get in touch</p>
         <h2 id="contact-title">Have a good<br><em>quiet idea?</em></h2>
+        <span class="community-label">Communities I’m in</span>
+        <div class="community-list" aria-label="Communities">
+          <span class="community-tag">Programmer Club</span>
+          <span class="community-tag">Signal</span>
+          <span class="community-tag">Linux</span>
+          <a class="community-tag" href="https://keimai.space" target="_blank" rel="noopener noreferrer">Keimai.space</a>
+        </div>
         <div class="contact-methods">
           <a class="contact-link" href="mailto:aheisleycook@gmail.com" target="_blank">
             <span class="contact-link-label">Email</span>
