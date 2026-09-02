@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programmers Club</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --surface: #161b22;
+            --surface-alt: #1c2330;
+            --border: #2a3441;
+            --text: #c9d1d9;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --accent-2: #3fb950;
+            --heading: #f0f6fc;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(circle at 15% 10%, rgba(88, 166, 255, 0.08), transparent 40%),
+                radial-gradient(circle at 85% 30%, rgba(63, 185, 80, 0.08), transparent 40%);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            background-color: rgba(22, 27, 34, 0.85);
+            backdrop-filter: blur(6px);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            font-weight: 700;
+            font-size: 1.1em;
+            color: var(--heading);
+            font-family: 'Consolas', 'Courier New', monospace;
+        }
+
+        .brand::before {
+            content: "</>";
+            color: var(--accent-2);
+            margin-right: 8px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 48px auto;
+            padding: 40px;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        h1 {
+            color: var(--heading);
+            font-size: 2em;
+            margin-top: 0;
+        }
+
+        h1 .prompt {
+            color: var(--accent-2);
+            font-family: 'Consolas', 'Courier New', monospace;
+        }
+
+        h2 {
+            color: var(--heading);
+            border-left: 4px solid var(--accent);
+            padding-left: 12px;
+            margin-top: 40px;
+        }
+
+        p {
+            color: var(--text);
+        }
+
+        .card-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            display: grid;
+            gap: 10px;
+        }
+
+        .card-list li {
+            background-color: var(--surface-alt);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 16px;
+        }
+
+        .card-list li::before {
+            content: "›";
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .members {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .members li {
+            background-color: var(--surface-alt);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 8px 18px;
+            font-size: 0.95em;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .contact {
+            background-color: var(--surface-alt);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-top: 20px;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            padding-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <span class="brand">Programmers Club</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1><span class="prompt">$</span> Welcome to the Programmers Club</h1>
+        <p>This is a community for programmers to share knowledge, collaborate on projects, and improve their coding skills.</p>
+
+        <ul class="card-list">
+            <li>Share knowledge through articles and tutorials</li>
+            <li>Collaborate on open-source projects</li>
+            <li>Participate in coding challenges and hackathons</li>
+            <li>Attend workshops and meetups</li>
+        </ul>
+
+        <p>Join us to enhance your programming journey and connect with like-minded individuals.</p>
+
+        <div class="contact">
+            <p>Contact us at <a href="mailto:info@programmersclub.com">info@programmersclub.com</a> for more information.</p>
+        </div>
+
+        <h2>Members</h2>
+        <ul class="members">
+            <li>Hannah</li>
+            <li>Peter</li>
+            <li>luna dragofelis</li>
+            <li>Fries</li>
+        </ul>
+
+        <footer>
+            <p>&copy; 2026 Programmers Club. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
