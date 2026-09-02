@@ -1,201 +1,470 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Club</title>
-    <style>
-        :root {
-            --bg: #0d1117;
-            --surface: #161b22;
-            --surface-alt: #1c2330;
-            --border: #2a3441;
-            --text: #c9d1d9;
-            --text-muted: #8b949e;
-            --accent: #58a6ff;
-            --accent-2: #d29922;
-            --heading: #f0f6fc;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI Club — a community for AI enthusiasts to share knowledge, collaborate, and learn together.">
+  <title>AI Club 🤖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f2f4ee;
+      --surface: #fbfcf8;
+      --ink: #18221d;
+      --muted: #5d6961;
+      --line: #cbd3cb;
+      --green: #245d3f;
+      --mint: #b9f0c2;
+      --acid: #e0fb6a;
+      --coral: #ff9275;
+      --shadow: rgba(24, 34, 29, 0.12);
+    }
 
-        * {
-            box-sizing: border-box;
-        }
+    body.dark {
+      --bg: #0f1117;
+      --surface: #161b22;
+      --ink: #e6edf3;
+      --muted: #8b949e;
+      --line: #30363d;
+      --shadow: rgba(0, 0, 0, 0.4);
+    }
 
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg);
-            background-image:
-                radial-gradient(circle at 15% 10%, rgba(88, 166, 255, 0.08), transparent 40%),
-                radial-gradient(circle at 85% 30%, rgba(210, 153, 34, 0.08), transparent 40%);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
-            line-height: 1.7;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        header {
-            border-bottom: 1px solid var(--border);
-            background-color: rgba(22, 27, 34, 0.85);
-            backdrop-filter: blur(6px);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .nav {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Space Grotesk", sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
 
-        .brand {
-            font-weight: 700;
-            font-size: 1.1em;
-            color: var(--heading);
-            font-family: 'Consolas', 'Courier New', monospace;
-        }
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
 
-        .brand::before {
-            content: "🤖";
-            margin-right: 8px;
-        }
+    a:hover {
+      opacity: 0.7;
+    }
 
-        .container {
-            max-width: 800px;
-            margin: 48px auto;
-            padding: 40px;
-            background-color: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
-        }
+    .site-shell {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-        h1 {
-            color: var(--heading);
-            font-size: 2em;
-            margin-top: 0;
-        }
+    main {
+      flex: 1;
+    }
 
-        h1 .prompt {
-            color: var(--accent-2);
-            font-family: 'Consolas', 'Courier New', monospace;
-        }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 0 40px;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+    }
 
-        h2 {
-            color: var(--heading);
-            border-left: 4px solid var(--accent-2);
-            padding-left: 12px;
-            margin-top: 40px;
-        }
+    .wordmark {
+      font-weight: 600;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        p {
-            color: var(--text);
-        }
+    .wordmark .robot {
+      font-size: 20px;
+    }
 
-        .card-list {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-            display: grid;
-            gap: 10px;
-        }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-size: 14px;
+      font-weight: 500;
+    }
 
-        .card-list li {
-            background-color: var(--surface-alt);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 12px 16px;
-        }
+    nav a {
+      position: relative;
+    }
 
-        .card-list li::before {
-            content: "›";
-            color: var(--accent);
-            font-weight: bold;
-            margin-right: 10px;
-        }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--green);
+      transition: width 0.3s;
+    }
 
-        ul.members {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+    nav a:hover::after {
+      width: 100%;
+    }
 
-        ul.members li {
-            background-color: var(--surface-alt);
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            padding: 8px 18px;
-            font-size: 0.95em;
-        }
+    .nav-contact {
+      padding: 8px 16px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--green);
+      color: white;
+    }
 
-        .contact {
-            background-color: var(--surface-alt);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px 20px;
-            margin-top: 20px;
-        }
+    .nav-contact::after {
+      display: none;
+    }
 
-        a {
-            color: var(--accent);
-            text-decoration: none;
-        }
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+    }
 
-        a:hover {
-            text-decoration: underline;
-        }
+    .theme-toggle:hover {
+      opacity: 0.6;
+    }
 
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 0.85em;
-            color: var(--text-muted);
-            padding-bottom: 30px;
-        }
-    </style>
+    .hero {
+      min-height: min(560px, calc(100vh - 82px));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+      padding: 82px 40px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 24px 0;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--green);
+    }
+
+    .hero-intro {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0;
+      max-width: 640px;
+    }
+
+    .ticker {
+      overflow: hidden;
+      padding: 18px 0;
+      color: var(--ink);
+      background: var(--acid);
+      white-space: nowrap;
+      font: 500 12px "DM Mono", monospace;
+    }
+
+    .ticker-track {
+      display: inline-flex;
+      gap: 22px;
+      animation: scroll-ticker 30s linear infinite;
+    }
+
+    @keyframes scroll-ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .section-heading {
+      margin-bottom: 48px;
+    }
+
+    .section-heading h2 {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin: 16px 0 0 0;
+    }
+
+    .section-heading h2 em {
+      font-style: italic;
+      color: var(--green);
+    }
+
+    .focus-section {
+      padding: 82px 40px;
+      background: var(--surface);
+    }
+
+    .focus-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+    }
+
+    .focus-card {
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--bg);
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .focus-card:hover {
+      border-color: var(--green);
+      box-shadow: 0 8px 32px var(--shadow);
+    }
+
+    .focus-mark {
+      font-size: 24px;
+      color: var(--green);
+    }
+
+    .focus-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .members-section {
+      padding: 82px 40px;
+      background: var(--bg);
+    }
+
+    .members-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .members-list span {
+      padding: 8px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      font: 500 13px "DM Mono", monospace;
+      color: var(--ink);
+    }
+
+    .contact-section {
+      padding: 82px 40px;
+      background: var(--surface);
+    }
+
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--bg);
+      transition: all 0.3s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--green);
+      box-shadow: 0 8px 32px var(--shadow);
+    }
+
+    .contact-link-label {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .contact-link-icon {
+      font-size: 20px;
+      color: var(--green);
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 40px;
+      border-top: 1px solid var(--line);
+      background: var(--surface);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      .topbar {
+        padding: 0 24px;
+        height: 64px;
+      }
+
+      nav {
+        gap: 16px;
+        font-size: 12px;
+      }
+
+      .hero,
+      .focus-section,
+      .members-section,
+      .contact-section {
+        padding: 64px 24px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .section-heading h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="nav">
-            <span class="brand">AI Club</span>
-        </div>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="wordmark" href="#hero-title" aria-label="AI Club home">AI Club<span class="robot">🤖</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#focus">Focus</a>
+        <a href="#members">Members</a>
+        <a href="#contact" class="nav-contact">Join us <span aria-hidden="true">↗</span></a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch theme">
+          <span class="theme-icon" aria-hidden="true">☼</span>
+        </button>
+      </nav>
     </header>
 
-    <div class="container">
-        <h1><span class="prompt">$</span> Welcome to the AI Club</h1>
-        <p>This is a community for AI enthusiasts to share knowledge, collaborate on projects, and improve their AI skills.</p>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="eyebrow"><span class="status-dot"></span> Community / open to new members</p>
+        <h1 id="hero-title">Welcome to the<br><em>AI Club.</em></h1>
+        <p class="hero-intro">This is a community for AI enthusiasts to share knowledge, collaborate on projects, and improve their AI skills.</p>
+      </section>
 
-        <ul class="card-list">
-            <li>Share knowledge through articles and tutorials</li>
-            <li>Collaborate on AI projects</li>
-            <li>Participate in AI challenges and hackathons</li>
-            <li>Engage in online discussions and forums</li>
-        </ul>
+      <div class="ticker" aria-hidden="true"><div class="ticker-track">MACHINE LEARNING <span>+</span> NEURAL NETWORKS <span>+</span> OPEN SOURCE <span>+</span> MACHINE LEARNING <span>+</span> NEURAL NETWORKS</div></div>
 
-        <div class="contact">
-            <p>Join our Matrix channel: <a href="https://matrix.to/#/#ai-club:keimai.space" target="_blank" rel="noopener noreferrer">#ai-club:keimai.space</a></p>
+      <section class="focus-section" id="focus" aria-labelledby="focus-title">
+        <div class="section-heading"><p class="eyebrow">01 / What we do</p><h2 id="focus-title">Building things<br><em>together.</em></h2></div>
+        <div class="focus-list">
+          <div class="focus-card">
+            <span class="focus-mark">✎</span>
+            <p class="focus-desc">Share knowledge through articles and tutorials</p>
+          </div>
+          <div class="focus-card">
+            <span class="focus-mark">◆</span>
+            <p class="focus-desc">Collaborate on AI projects</p>
+          </div>
+          <div class="focus-card">
+            <span class="focus-mark">⚡</span>
+            <p class="focus-desc">Participate in AI challenges and hackathons</p>
+          </div>
+          <div class="focus-card">
+            <span class="focus-mark">✦</span>
+            <p class="focus-desc">Engage in online discussions and forums</p>
+          </div>
         </div>
+      </section>
 
-        <div class="members">
-            <h2>Members</h2>
-            <ul class="members">
-                <li>algebraity</li>
-                <li>technoshy</li>
-                <li>flower</li>
-                <li>ratt</li>
-                <li>leahponyta</li>
-            </ul>
+      <section class="members-section" id="members" aria-labelledby="members-title">
+        <div class="section-heading"><p class="eyebrow">02 / Members</p><h2 id="members-title">The people<br><em>behind it.</em></h2></div>
+        <div class="members-list" aria-label="Members">
+          <span>algebraity</span>
+          <span>technoshy</span>
+          <span>flower</span>
+          <span>ratt</span>
+          <span>leahponyta</span>
         </div>
+      </section>
 
-        <footer>
-            <p>&copy; 2026 AI Club. All rights reserved.</p>
-        </footer>
-    </div>
+      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="section-heading"><p class="eyebrow">03 / Get involved</p><h2 id="contact-title">Come say<br><em>hello.</em></h2></div>
+        <div class="contact-methods">
+          <a class="contact-link" href="https://matrix.to/#/#ai-club:keimai.space" target="_blank" rel="noopener noreferrer">
+            <span class="contact-link-label">Matrix: #ai-club:keimai.space</span>
+            <span class="contact-link-icon">⧉</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer"><span>© 2026 AI Club</span><a href="#hero-title">Back to top ↑</a></footer>
+  </div>
+
+  <script>
+    const themeToggle = document.querySelector('.theme-toggle');
+    const themeIcon = document.querySelector('.theme-icon');
+
+    function setTheme(theme) {
+      const isDark = theme === 'dark';
+      document.body.classList.toggle('dark', isDark);
+      themeIcon.textContent = isDark ? '☾' : '☼';
+      themeToggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+      localStorage.setItem('aiclub-theme', theme);
+    }
+
+    const savedTheme = localStorage.getItem('aiclub-theme');
+    if (savedTheme === 'dark' || savedTheme === 'light') setTheme(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      setTheme(document.body.classList.contains('dark') ? 'light' : 'dark');
+    });
+  </script>
 </body>
 </html>
