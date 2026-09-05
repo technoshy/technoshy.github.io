@@ -361,6 +361,34 @@
       color: var(--green);
     }
 
+    .ai-disclosure-section {
+      padding: 0 40px 82px;
+      background: var(--bg);
+    }
+
+    .disclosure-card {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(185, 240, 194, 0.18), var(--surface));
+      box-shadow: 0 8px 32px var(--shadow);
+    }
+
+    .disclosure-card h2 {
+      margin: 12px 0 16px;
+      font-size: clamp(2rem, 3vw, 2.4rem);
+      line-height: 1.2;
+    }
+
+    .disclosure-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
     .bio-section {
       padding: 82px 40px;
       background: var(--bg);
@@ -706,6 +734,7 @@
         <a href="#work">Work</a>
         <a href="#skills">Skills</a>
         <a href="#approach">About</a>
+        <a href="#ai-disclosure">AI Disclosure</a>
         <a href="todo.html">Todo</a>
         <a href="journal.html">Journal</a>
         <a href="programmersclub.html">Programmers Club</a>
@@ -734,6 +763,14 @@
       </section>
 
       <div class="ticker" aria-hidden="true"><div class="ticker-track">TERMINAL DWELLER <span>+</span> SOFT SYSTEMS <span>+</span> SMALL JOYS <span>+</span> TERMINAL DWELLER <span>+</span> SOFT SYSTEMS</div></div>
+
+      <section class="ai-disclosure-section" id="ai-disclosure" aria-labelledby="ai-disclosure-title">
+        <div class="disclosure-card">
+          <p class="eyebrow">AI disclosure</p>
+          <h2 id="ai-disclosure-title">Responsible use of AI</h2>
+          <p>I use AI tools to support brainstorming, editing, and prototyping. All final work is reviewed, refined, and approved by me before it is published. My voice, judgment, and decisions remain the final authority, and I do not present AI-generated output as my own without careful review.</p>
+        </div>
+      </section>
 
       <section class="bio-section" id="bio" aria-labelledby="bio-title">
         <div class="section-heading"><p class="eyebrow">01 / Bio</p><h2 id="bio-title">A fox in the code den,<br><em>quiet but active.</em></h2></div>
