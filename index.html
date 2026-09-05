@@ -479,7 +479,7 @@
     
     .skills-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 32px;
       margin-bottom: 48px;
     }
@@ -793,10 +793,20 @@
               <p>Frontend and backend work with HTML, CSS, JavaScript, and modern frameworks.</p>
             </div>
           </article>
+          <article class="skill-feature">
+            <span class="skill-mark">AI</span>
+            <div>
+              <h3>AI Programming</h3>
+              <p>Building practical AI-powered features, automation, and assistant workflows for real-world tools.</p>
+            </div>
+          </article>
         </div>
         <div class="skill-list" aria-label="Additional skills">
           <span>HTML / CSS</span>
           <span>JavaScript</span>
+          <span>AI Programming</span>
+          <span>GitHub Copilot</span>
+          <span>Flask</span>
           <span>Java</span>
           <span>Git / GitHub</span>
           <span>Qt</span>
