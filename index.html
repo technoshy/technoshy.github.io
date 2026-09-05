@@ -132,6 +132,76 @@
     nav a:hover::after {
       width: 100%;
     }
+
+    .menu-group {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .menu-toggle {
+      appearance: none;
+      border: none;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+    }
+
+    .menu-toggle::after {
+      content: '▾';
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .menu-toggle:hover::after,
+    .menu-group:hover .menu-toggle::after,
+    .menu-group:focus-within .menu-toggle::after {
+      color: var(--green);
+    }
+
+    .menu-dropdown {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      min-width: 190px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+      box-shadow: 0 12px 32px var(--shadow);
+      z-index: 10;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .menu-group:hover .menu-dropdown,
+    .menu-group:focus-within .menu-dropdown,
+    .menu-group.is-open .menu-dropdown {
+      display: flex;
+    }
+
+    .menu-dropdown a {
+      padding: 10px 12px;
+      border-radius: 8px;
+      color: var(--ink);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .menu-dropdown a:hover {
+      background: rgba(185, 240, 194, 0.22);
+      opacity: 1;
+    }
     
     .nav-contact {
       padding: 8px 16px;
@@ -735,10 +805,28 @@
         <a href="#skills">Skills</a>
         <a href="#approach">About</a>
         <a href="#ai-disclosure">AI Disclosure</a>
-        <a href="todo.html">Todo</a>
-        <a href="journal.html">Journal</a>
-        <a href="programmersclub.html">Programmers Club</a>
-        <a href="aiclub.html">AI Club</a>
+        <div class="menu-group">
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Open notes menu">Notes</button>
+          <div class="menu-dropdown" aria-label="Notes links">
+            <a href="todo.html">Todo</a>
+            <a href="journal.html">Journal</a>
+          </div>
+        </div>
+        <div class="menu-group">
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Open clubs menu">Clubs</button>
+          <div class="menu-dropdown" aria-label="Club links">
+            <a href="programmersclub.html">Programmers Club</a>
+            <a href="aiclub.html">AI Club</a>
+          </div>
+        </div>
+        <div class="menu-group">
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Open apps menu">Apps</button>
+          <div class="menu-dropdown" aria-label="App links">
+            <a href="https://github.com/afheisleycook/desktopjournal" target="_blank" rel="noopener noreferrer">Desktop Journal</a>
+            <a href="https://github.com/afheisleycook/tictactoe" target="_blank" rel="noopener noreferrer">Tic Tac Toe</a>
+            <a href="https://github.com/afheisleycook/calculator" target="_blank" rel="noopener noreferrer">Calculator</a>
+          </div>
+        </div>
         <a href="#contact" class="nav-contact">Say hello <span aria-hidden="true">↗</span></a>
         <button class="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch theme">
           <span class="theme-icon" aria-hidden="true">☼</span>
@@ -917,6 +1005,7 @@
   <script>
     const themeToggle = document.querySelector('.theme-toggle');
     const themeIcon = document.querySelector('.theme-icon');
+    const menuGroups = document.querySelectorAll('.menu-group');
     
     function setTheme(theme) {
       const isDark = theme === 'dark';
@@ -925,12 +1014,40 @@
       themeToggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
       localStorage.setItem('technoshy-theme', theme);
     }
+
+    function setMenuOpen(menuGroup, open) {
+      if (!menuGroup) return;
+      const button = menuGroup.querySelector('.menu-toggle');
+      menuGroup.classList.toggle('is-open', open);
+      if (button) {
+        button.setAttribute('aria-expanded', String(open));
+      }
+    }
     
     const savedTheme = localStorage.getItem('technoshy-theme');
     if (savedTheme === 'dark' || savedTheme === 'light') setTheme(savedTheme);
     
     themeToggle.addEventListener('click', () => {
       setTheme(document.body.classList.contains('dark') ? 'light' : 'dark');
+    });
+
+    menuGroups.forEach((menuGroup) => {
+      const toggle = menuGroup.querySelector('.menu-toggle');
+      if (!toggle) return;
+
+      toggle.addEventListener('click', () => {
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        menuGroups.forEach((other) => setMenuOpen(other, false));
+        setMenuOpen(menuGroup, !isOpen);
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      menuGroups.forEach((menuGroup) => {
+        if (!menuGroup.contains(event.target)) {
+          setMenuOpen(menuGroup, false);
+        }
+      });
     });
   </script>
 </body>
