@@ -7,10 +7,32 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
-                height: 100vh;
                 margin: 0;
+                padding: 0;
                 background-color: #f4f4f4;
+            }
+            header {
+                width: 100%;
+                background-color: #333;
+                color: #fff;
+                padding: 10px 0;
+            }
+            nav ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+            }
+            nav ul li {
+                margin: 0 15px;
+            }
+            nav ul li a {
+                color: #fff;
+                text-decoration: none;
+            }
+            h1, h2 {
+                text-align: center;
             }
             #game {
                 display: grid;
@@ -31,38 +53,59 @@
             }
             button {
                 margin-top: 20px;
+                margin-bottom: 20px;
                 padding: 10px 20px;
                 font-size: 1em;
             }
-            nav ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-                display: flex;
-                justify-content: center;
+            footer {
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+                background-color: #333;
+                color: #fff;
+                margin-top: auto;
             }
-            nav ul li {
-                margin: 0 15px;
+
+            @media (max-width: 600px) {
+                nav ul {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                nav ul li {
+                    margin: 8px 0;
+                }
+                h1, h2 {
+                    font-size: 1.4em;
+                    padding: 0 10px;
+                }
+                #game {
+                    grid-template-columns: repeat(3, 80px);
+                    grid-template-rows: repeat(3, 80px);
+                }
+                .cell {
+                    width: 80px;
+                    height: 80px;
+                    font-size: 1.6em;
+                }
             }
-            nav ul li a {
-                color: #000;
-                text-decoration: none;
-            }       
         </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="aiclub.html">AI Club</a></li>
-                <li><a href="programmersclub.html">Programmers Club</a></li>
-                <li><a href="todo.html">To-Do List</a></li>
-                <li><a href="journal.html">Journal</a></li>
-                <li><a href="calculator.html">Calculator</a></li>
-                <li><a href="tictactoe.html">Tic Tac Toe</a></li>
-            </ul>
-        </nav>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="aiclub.html">AI Club</a></li>
+                    <li><a href="programmersclub.html">Programmers Club</a></li>
+                    <li><a href="todo.html">To-Do List</a></li>
+                    <li><a href="journal.html">Journal</a></li>
+                    <li><a href="calculator.html">Calculator</a></li>
+                    <li><a href="tictactoe.html">Tic Tac Toe</a></li>
+                </ul>
+            </nav>
+        </header>
         <h1>Tic Tac Toe</h1>
         <h2 id="status">
             Player X's turn
@@ -131,5 +174,8 @@ cells[a].textContent} wins!`);
             });
 
         </script>
+        <footer>
+            <p>&copy; 2026 technoshy. All rights reserved.</p>
+        </footer>
     </body>
 </html>
