@@ -1,98 +1,1054 @@
-<html>
-    <head>
-        <title>welcome to my site</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #f4f4f4;
-            }
-            header {
-                background-color: #333;
-                color: #fff;
-                padding: 10px 0;
-            }
-            nav ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-                display: flex;
-                justify-content: center;
-            }
-            nav ul li {
-                margin: 0 15px;
-            }
-            nav ul li a {
-                color: #fff;
-                text-decoration: none;
-            }
-            h1, h2 {
-                text-align: center;
-            }
-            .intro, .contact {
-                max-width: 600px;
-                margin: 20px auto;
-                padding: 20px;
-                background-color: #fff;
-                border-radius: 5px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            }
-            footer {
-                text-align: center;
-                padding: 10px 0;
-                background-color: #333;
-                color: #fff;
-            }
-            .skills {
-                list-style-type: none;
-                max-width: 600px;
-                margin: 20px auto;
-                padding: 20px;
-                background-color: #fff;
-                border-radius: 5px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            }
-        </style> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="aiclub.html">AI Club</a></li>
-                    <li><a href="programmersclub.html">Programmers Club</a></li>
-                    <li><a href="todo.html">To-Do List</a></li>
-                    <li><a href="journal.html">Journal</a></li></li>
-                </ul>
-            </nav>
-        </header>
-        <h1>technoshy the programming fox</h1>
-        <div class="intro">
-            <p>Hello! My name is technoshy, and I am a web developer. This website serves as a platform to showcase my work, share my thoughts on web development, and connect with like-minded individuals.</p>
-        <p> i am a web developer and this is my personal website where I share my projects and blog spots. Feel free to explore and connect with me!</p>
-        <h1>about me</h1>
-        <p> I am a passionate web developer with experience in front-end and back-end development. I enjoy creating user-friendly websites and applications that provide value to users.</p>
-        <p> You can find my projects on <a href="https://github.com/technoshy">GitHub</a>.</p
-        <h2>About my goals</h2>
-        <p> My goal is to become a full-stack web developer and contribute to open-source projects. I am constantly learning new technologies and improving my skills.</p>
-        <div class="skills">
-            <h2>Skills</h2>
-            <ul>
-                <li>HTML, CSS, JavaScript</li>
-                <li>React,</li>
-                <li>Python, flask</li>
-                <li>Database Management (MySQL, MongoDB)</li>
-                <li>Version Control (Git)</li>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="I am Technoshy, an introverted code fox who lives in the terminal and builds gentle things.">
+  <title>technoshy 🦊 — introverted code fox</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='24' fill='%23f2f4ee'/%3E%3Cpath d='M26 36L48 58l16 14 16-14 22-22v28l-12 14v18H38V78L26 64V36z' fill='%2318221d'/%3E%3Cpath d='M53 42h22l9 18H44l9-18zm-6 30h34v20H47V72z' fill='%23b9f0c2'/%3E%3Ccircle cx='52' cy='58' r='4' fill='%23f2f4ee'/%3E%3Ccircle cx='76' cy='58' r='4' fill='%23f2f4ee'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f2f4ee;
+      --surface: #fbfcf8;
+      --ink: #18221d;
+      --muted: #5d6961;
+      --line: #cbd3cb;
+      --green: #245d3f;
+      --mint: #b9f0c2;
+      --acid: #e0fb6a;
+      --coral: #ff9275;
+      --shadow: rgba(24, 34, 29, 0.12);
+    }
+    
+    body.dark {
+      --bg: #0f1117;
+      --surface: #161b22;
+      --ink: #e6edf3;
+      --muted: #8b949e;
+      --line: #30363d;
+      --shadow: rgba(0, 0, 0, 0.4);
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Space Grotesk", sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    
+    a:hover {
+      opacity: 0.7;
+    }
+    
+    .site-shell {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    main {
+      flex: 1;
+    }
+    
+    /* Topbar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 0 40px;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+    }
+    
+    .wordmark {
+      font-weight: 600;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .wordmark .fox {
+      font-size: 20px;
+    }
+    
+    .wordmark .cursor {
+      display: inline-block;
+      animation: blink 1s infinite;
+    }
+    
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    nav a {
+      position: relative;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--green);
+      transition: width 0.3s;
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .menu-group {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .menu-toggle {
+      appearance: none;
+      border: none;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+    }
+
+    .menu-toggle::after {
+      content: '▾';
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .menu-toggle:hover::after,
+    .menu-group:hover .menu-toggle::after,
+    .menu-group:focus-within .menu-toggle::after {
+      color: var(--green);
+    }
+
+    .menu-dropdown {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      min-width: 190px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+      box-shadow: 0 12px 32px var(--shadow);
+      z-index: 10;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .menu-group:hover .menu-dropdown,
+    .menu-group:focus-within .menu-dropdown,
+    .menu-group.is-open .menu-dropdown {
+      display: flex;
+    }
+
+    .menu-dropdown a {
+      padding: 10px 12px;
+      border-radius: 8px;
+      color: var(--ink);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .menu-dropdown a:hover {
+      background: rgba(185, 240, 194, 0.22);
+      opacity: 1;
+    }
+    
+    .nav-contact {
+      padding: 8px 16px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--green);
+      color: white;
+    }
+    
+    .nav-contact::after {
+      display: none;
+    }
+    
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+    }
+    
+    .theme-toggle:hover {
+      opacity: 0.6;
+    }
+    
+    /* Hero Section */
+    .hero {
+      min-height: min(760px, calc(100vh - 82px));
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(290px, 0.96fr);
+      gap: 52px;
+      align-items: center;
+      padding: 82px 40px;
+    }
+    
+    .hero-copy h1 {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 24px 0;
+    }
+    
+    .hero-copy h1 em {
+      font-style: italic;
+      color: var(--green);
+    }
+    
+    .hero-intro {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 24px 0;
+    }
+    
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .button-primary {
+      background: var(--green);
+      color: white;
+      border-color: var(--green);
+    }
+    
+    .button-primary:hover {
+      background: #1d4a32;
+      opacity: 1;
+    }
+
+    .ai-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(185, 240, 194, 0.28);
+      color: var(--green);
+      font: 600 11px "DM Mono", monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    
+    .hero-mark {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hero-mark img {
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 50%;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .orbit {
+      position: absolute;
+      border: 2px solid var(--line);
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+    
+    .orbit-one {
+      width: 320px;
+      height: 320px;
+      animation: rotate 20s linear infinite;
+    }
+    
+    .orbit-two {
+      width: 240px;
+      height: 240px;
+      animation: rotate 15s linear infinite reverse;
+    }
+    
+    .orbit-three {
+      width: 160px;
+      height: 160px;
+      animation: rotate 10s linear infinite;
+    }
+    
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .mark-label {
+      position: absolute;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    
+    .label-top {
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .label-bottom {
+      bottom: -40px;
+      right: 0;
+    }
+    
+    /* Ticker */
+    .ticker {
+      overflow: hidden;
+      padding: 18px 0;
+      color: var(--ink);
+      background: var(--acid);
+      white-space: nowrap;
+      font: 500 12px "DM Mono", monospace;
+    }
+    
+    .ticker-track {
+      display: inline-flex;
+      gap: 22px;
+      animation: scroll-ticker 30s linear infinite;
+    }
+    
+    @keyframes scroll-ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    /* Sections */
+    .section-heading {
+      margin-bottom: 48px;
+    }
+    
+    .section-heading h2 {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin: 16px 0 0 0;
+    }
+    
+    .section-heading h2 em {
+      font-style: italic;
+      color: var(--green);
+    }
+
+    .ai-disclosure-section {
+      padding: 0 40px 82px;
+      background: var(--bg);
+    }
+
+    .disclosure-card {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(185, 240, 194, 0.18), var(--surface));
+      box-shadow: 0 8px 32px var(--shadow);
+    }
+
+    .disclosure-card h2 {
+      margin: 12px 0 16px;
+      font-size: clamp(2rem, 3vw, 2.4rem);
+      line-height: 1.2;
+    }
+
+    .disclosure-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .bio-section {
+      padding: 82px 40px;
+      background: var(--bg);
+    }
+
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .bio-card {
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+      box-shadow: 0 8px 32px var(--shadow);
+    }
+
+    .bio-card.feature {
+      background: linear-gradient(135deg, var(--surface), rgba(185, 240, 194, 0.25));
+    }
+
+    .bio-card p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .bio-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .bio-card .sigil {
+      display: inline-block;
+      margin-bottom: 18px;
+      font: 600 12px "DM Mono", monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+
+    .bio-facts {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .bio-facts li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .bio-facts li::before {
+      content: "✦";
+      color: var(--green);
+      font-size: 16px;
+    }
+    
+    .work-section {
+      padding: 82px 40px;
+      background: var(--surface);
+    }
+    
+    .project-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+    
+    .project {
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--bg);
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .project:hover {
+      border-color: var(--green);
+      box-shadow: 0 8px 32px var(--shadow);
+    }
+    
+    .project-number {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--green);
+    }
+    
+    .project-name {
+      font-weight: 600;
+      font-size: 18px;
+    }
+    
+    .project-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    
+    /* Skills Section */
+    .skills-section {
+      padding: 82px 40px;
+      background: var(--bg);
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    
+    .skill-feature {
+      min-height: 250px;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+    }
+    
+    .skill-mark {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--green);
+      font-family: "DM Mono", monospace;
+    }
+    
+    .skill-feature h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0;
+    }
+    
+    .skill-feature p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    
+    .skill-list span {
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font: 500 12px "DM Mono", monospace;
+    }
+    
+    /* Approach Section */
+    .approach-section {
+      padding: 82px 40px;
+      background: var(--surface);
+    }
+    
+    .approach-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    
+    .approach-text p {
+      margin: 0 0 16px 0;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    
+    .principles {
+      display: grid;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    
+    .principles li {
+      font-size: 14px;
+      color: var(--muted);
+      padding-left: 20px;
+      position: relative;
+    }
+    
+    .principles li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      padding: 82px 40px;
+      background: var(--bg);
+    }
+    
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      transition: all 0.3s;
+    }
+    
+    .contact-link:hover {
+      border-color: var(--green);
+      box-shadow: 0 8px 32px var(--shadow);
+    }
+    
+    .contact-link-label {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    .contact-link-icon {
+      font-size: 20px;
+      color: var(--green);
+    }
+
+    .community-label {
+      display: block;
+      margin-top: 26px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .community-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .community-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      font-size: 13px;
+      color: var(--ink);
+    }
+    
+    /* Footer */
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 40px;
+      border-top: 1px solid var(--line);
+      background: var(--surface);
+      font-size: 12px;
+      color: var(--muted);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .topbar {
+        padding: 0 24px;
+        height: 64px;
+      }
+      
+      nav {
+        gap: 16px;
+        font-size: 12px;
+      }
+      
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 64px 24px;
+      }
+      
+      .hero-copy h1 {
+        font-size: 36px;
+      }
+      
+      .bio-section,
+      .work-section,
+      .skills-section,
+      .approach-section,
+      .contact-section {
+        padding: 64px 24px;
+      }
+      
+      .bio-grid,
+      .skills-grid,
+      .approach-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .project-list,
+      .contact-methods {
+        grid-template-columns: 1fr;
+      }
+      
+      .section-heading h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="wordmark" href="#hero-title" aria-label="Technoshy home">technoshy<span class="fox">🦊</span><span class="cursor">_</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#bio">Bio</a>
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#approach">About</a>
+        <a href="#ai-disclosure">AI Disclosure</a>
+        <div class="menu-group">
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Open notes menu">Notes</button>
+          <div class="menu-dropdown" aria-label="Notes links">
+            <a href="todo.html">Todo</a>
+            <a href="journal.html">Journal</a>
+          </div>
+        </div>
+        <div class="menu-group">
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Open clubs menu">Clubs</button>
+          <div class="menu-dropdown" aria-label="Club links">
+            <a href="programmersclub.html">Programmers Club</a>
+            <a href="aiclub.html">AI Club</a>
+          </div>
+        </div>
+        <div class="menu-group">
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Open apps menu">Apps</button>
+          <div class="menu-dropdown" aria-label="App links">
+            <a href="https://github.com/afheisleycook/desktopjournal" target="_blank" rel="noopener noreferrer">Desktop Journal</a>
+            <a href="https://github.com/afheisleycook/tictactoe" target="_blank" rel="noopener noreferrer">Tic Tac Toe</a>
+            <a href="https://github.com/afheisleycook/calculator" target="_blank" rel="noopener noreferrer">Calculator</a>
+          </div>
+        </div>
+        <a href="#contact" class="nav-contact">Say hello <span aria-hidden="true">↗</span></a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch theme">
+          <span class="theme-icon" aria-hidden="true">☼</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot"></span> Introverted code fox / online now</p>
+          <h1 id="hero-title">I am Technoshy,<br><em>the code fox.</em></h1>
+          <p class="hero-intro">I live in the terminal, powered by coffee ☕<br>RGB keyboard, big headphones, soft voice.</p>
+          <a class="button button-primary" href="#contact">Please be gentle <span aria-hidden="true">↘</span></a>
+          <div class="ai-badge" aria-label="Made by technoshy">Made by technoshy</div>
+        </div>
+        <div class="hero-mark">
+          <img src="https://drive.google.com/thumbnail?id=1_n4Z9_LNWt7poikdW24Rg9SibyoG4WbB&sz=w1000" alt="Technoshy's coding fox fursona">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
+          <span class="mark-label label-top">soft voice / sharp mind</span><span class="mark-label label-bottom">coffee, code, repeat</span>
+        </div>
+      </section>
+
+      <div class="ticker" aria-hidden="true"><div class="ticker-track">TERMINAL DWELLER <span>+</span> SOFT SYSTEMS <span>+</span> SMALL JOYS <span>+</span> TERMINAL DWELLER <span>+</span> SOFT SYSTEMS</div></div>
+
+      <section class="ai-disclosure-section" id="ai-disclosure" aria-labelledby="ai-disclosure-title">
+        <div class="disclosure-card">
+          <p class="eyebrow">AI disclosure</p>
+          <h2 id="ai-disclosure-title">Responsible use of AI</h2>
+          <p>I use AI tools to support brainstorming, editing, and prototyping. All final work is reviewed, refined, and approved by me before it is published. My voice, judgment, and decisions remain the final authority, and I do not present AI-generated output as my own without careful review.</p>
+        </div>
+      </section>
+
+      <section class="bio-section" id="bio" aria-labelledby="bio-title">
+        <div class="section-heading"><p class="eyebrow">01 / Bio</p><h2 id="bio-title">A fox in the code den,<br><em>quiet but active.</em></h2></div>
+        <div class="bio-grid">
+          <div class="bio-card feature">
+            <span class="sigil">technoshy // fox</span>
+            <p>I’m Technoshy, a soft-spoken fox who builds digital things from the comfort of a terminal window and a cup of coffee.</p>
+            <p>I like calm interfaces, thoughtful systems, and tools that feel like they were made by a person who cares about the user—not just the output.</p>
+          </div>
+          <div class="bio-card">
+            <span class="sigil">traits</span>
+            <p>Introverted, observant, and quietly persistent. I care about small details, resilient design, and creating things that feel gentle to use.</p>
+            <ul class="bio-facts">
+              <li>Lives in the terminal and the browser</li>
+              <li>Builds small tools with intention</li>
+              <li>Prefers quiet systems over loud ones</li>
             </ul>
+          </div>
         </div>
-        <div class="contact">
-           <h2>Contact Me</h2>
-            <p> You can reach me via email at <a href="mailto:aheisleycook@gmail.com">aheisleycook@gmail.com</a>.</p>
+      </section>
+
+      <section class="work-section" id="work" aria-labelledby="work-title">
+        <div class="section-heading"><p class="eyebrow">01 / Selected work</p><h2 id="work-title">A few things<br>made with care.</h2></div>
+        <div class="project-list">
+          <a class="project" href="https://github.com/afheisleycook/desktopjournal" target="_blank" rel="noopener noreferrer">
+            <div class="project-number">01</div>
+            <div class="project-name">Desktop Journal</div>
+            <p class="project-desc">A minimal journaling application for introspection and self-reflection.</p>
+          </a>
+          <a class="project" href="https://github.com/afheisleycook/tictactoe" target="_blank" rel="noopener noreferrer">
+            <div class="project-number">02</div>
+            <div class="project-name">Tic Tac Toe</div>
+            <p class="project-desc">A simple implementation of the classic game with a clean interface.</p>
+          </a>
+          <a class="project" href="https://github.com/afheisleycook/calculator" target="_blank" rel="noopener noreferrer">
+            <div class="project-number">03</div>
+            <div class="project-name">Calculator</div>
+            <p class="project-desc">A functional calculator built with thoughtful design principles.</p>
+          </a>
         </div>
-        <footer>
-            <p>&copy; 2026 technoshy. All rights reserved.</p>
-        </footer>
-    </body>
+      </section>
+
+      <section class="skills-section" id="skills" aria-labelledby="skills-title">
+        <div class="section-heading"><p class="eyebrow">02 / Skills</p><h2 id="skills-title">Tools for<br><em>quiet momentum.</em></h2></div>
+        <div class="skills-grid">
+          <article class="skill-feature">
+            <span class="skill-mark">Py</span>
+            <div>
+              <h3>Python</h3>
+              <p>Small applications, automation, games, and desktop tools that bring ideas to life.</p>
+            </div>
+          </article>
+          <article class="skill-feature">
+            <span class="skill-mark">Web</span>
+            <div>
+              <h3>Web Development</h3>
+              <p>Frontend and backend work with HTML, CSS, JavaScript, and modern frameworks.</p>
+            </div>
+          </article>
+          <article class="skill-feature">
+            <span class="skill-mark">AI</span>
+            <div>
+              <h3>AI Programming</h3>
+              <p>Building practical AI-powered features, automation, and assistant workflows for real-world tools.</p>
+            </div>
+          </article>
+        </div>
+        <div class="skill-list" aria-label="Additional skills">
+          <span>HTML / CSS</span>
+          <span>JavaScript</span>
+          <span>AI Programming</span>
+          <span>GitHub Copilot</span>
+          <span>Flask</span>
+          <span>Java</span>
+          <span>Git / GitHub</span>
+          <span>Qt</span>
+          <span>Responsive design</span>
+          <span>UI/UX</span>
+          <span>Terminal tools</span>
+        </div>
+      </section>
+
+      <section class="approach-section" id="approach" aria-labelledby="approach-title">
+        <p class="eyebrow">03 / The approach</p>
+        <div class="approach-grid">
+          <h2 id="approach-title">Technology should<br>be <em>quiet.</em></h2>
+          <div class="approach-text">
+            <p>I build with intention. Every line of code has purpose. Every design decision is thoughtful. I believe in creating tools that don't demand attention but reward it.</p>
+            <p>Gentle by default. Powerful when needed. That's the philosophy behind everything I create.</p>
+            <ul class="principles">
+              <li>Minimize complexity</li>
+              <li>Prioritize clarity</li>
+              <li>Design with care</li>
+              <li>Code with intention</li>
+              <li>Respect the user</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+        <p class="eyebrow">04 / Get in touch</p>
+        <h2 id="contact-title">Have a good<br><em>quiet idea?</em></h2>
+        <span class="community-label">Communities I’m in</span>
+        <div class="community-list" aria-label="Communities">
+          <a class="community-tag" href="aiclub.html">AI Club</a>
+          <a class="community-tag" href="programmersclub.html">Programmer Club</a>
+          <span class="community-tag">Signal</span>
+          <span class="community-tag">Linux</span>
+          <a class="community-tag" href="https://keimai.space" target="_blank" rel="noopener noreferrer">Keimai.space</a>
+        </div>
+        <div class="contact-methods">
+          <a class="contact-link" href="mailto:aheisleycook@gmail.com" target="_blank">
+            <span class="contact-link-label">Email</span>
+            <span class="contact-link-icon">✉</span>
+          </a>
+          <a class="contact-link" href="tel:+18184261200">
+            <span class="contact-link-label">Phone</span>
+            <span class="contact-link-icon">☎</span>
+          </a>
+          <a class="contact-link" href="https://matrix.to/#/@technowizard:keimai.space" target="_blank">
+            <span class="contact-link-label">Matrix</span>
+            <span class="contact-link-icon">⧉</span>
+          </a>
+          <a class="contact-link" href="https://github.com/technoshy" target="_blank">
+            <span class="contact-link-label">GitHub</span>
+            <span class="contact-link-icon">◆</span>
+          </a>
+          <a class="contact-link" href="https://mk.keimai.space" target="_blank">
+            <span class="contact-link-label">Social</span>
+            <span class="contact-link-icon">○</span>
+          </a>
+          <a class="contact-link" href="https://technoshythefox.wordpress.com" target="_blank">
+            <span class="contact-link-label">Blog</span>
+            <span class="contact-link-icon">✎</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer"><span>© technoshy</span><span>Made by technoshy</span><a href="#hero-title">Back to top ↑</a></footer>
+  </div>
+
+  <script>
+    const themeToggle = document.querySelector('.theme-toggle');
+    const themeIcon = document.querySelector('.theme-icon');
+    const menuGroups = document.querySelectorAll('.menu-group');
+    
+    function setTheme(theme) {
+      const isDark = theme === 'dark';
+      document.body.classList.toggle('dark', isDark);
+      themeIcon.textContent = isDark ? '☾' : '☼';
+      themeToggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+      localStorage.setItem('technoshy-theme', theme);
+    }
+
+    function setMenuOpen(menuGroup, open) {
+      if (!menuGroup) return;
+      const button = menuGroup.querySelector('.menu-toggle');
+      menuGroup.classList.toggle('is-open', open);
+      if (button) {
+        button.setAttribute('aria-expanded', String(open));
+      }
+    }
+    
+    const savedTheme = localStorage.getItem('technoshy-theme');
+    if (savedTheme === 'dark' || savedTheme === 'light') setTheme(savedTheme);
+    
+    themeToggle.addEventListener('click', () => {
+      setTheme(document.body.classList.contains('dark') ? 'light' : 'dark');
+    });
+
+    menuGroups.forEach((menuGroup) => {
+      const toggle = menuGroup.querySelector('.menu-toggle');
+      if (!toggle) return;
+
+      toggle.addEventListener('click', () => {
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        menuGroups.forEach((other) => setMenuOpen(other, false));
+        setMenuOpen(menuGroup, !isOpen);
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      menuGroups.forEach((menuGroup) => {
+        if (!menuGroup.contains(event.target)) {
+          setMenuOpen(menuGroup, false);
+        }
+      });
+    });
+  </script>
+</body>
 </html>
