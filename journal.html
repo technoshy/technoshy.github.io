@@ -79,9 +79,14 @@
                     margin: 5px 0;
                 }
             }
+            .button-row {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
             button {
                 display: block;
-                margin: 10px auto;
+                margin: 10px 0;
                 padding: 10px 20px;
                 background-color: #333;
                 color: #fff;
@@ -137,8 +142,10 @@
     <div class="journal">
         <h1>Journal</h1>
         <textarea id="entry" placeholder="Write your journal entry here..."></textarea>
-        <button onclick="addentry()">Add Entry</button>
-        <button onclick="removeEntry()">Remove Entry</button>
+        <div class="button-row">
+            <button onclick="addentry()">Add Entry</button>
+            <button onclick="removeEntry()">Remove Entry</button>
+        </div>
     </div>
     <footer>
         <p>&copy; 2026 technoshy the programming fox</p>
