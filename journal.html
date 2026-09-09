@@ -97,6 +97,14 @@
             button:hover {
                 background-color: #555;
             }
+            .entry {
+                text-align: center;
+                margin-top: 20px;
+                background-color: #fff;
+                padding: 10px;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);    
+            }
 
 </style>
 <script>
@@ -114,16 +122,14 @@
         var savedEntry = localStorage.getItem("journalEntry");
         var entryDisplay = document.createElement("p");
         entryDisplay.textContent = savedEntry;
-        var footer = document.querySelector("footer");
-        footer.parentNode.insertBefore(entryDisplay, footer);
+        var entryContainer = document.querySelector(".entry");
+        entryContainer.appendChild(entryDisplay);
     }
     function removeEntry() {
         localStorage.removeItem("journalEntry");
         alert("Journal entry removed!");
-        var entryDisplay = document.querySelector("footer").previousElementSibling;
-        if (entryDisplay && entryDisplay.tagName === "P") {
-            entryDisplay.remove();
-        }
+        var entryContainer = document.querySelector(".entry");
+        entryContainer.innerHTML = "";
     }
 </script>
     </head>
@@ -145,6 +151,9 @@
         <div class="button-row">
             <button onclick="addentry()">Add Entry</button>
             <button onclick="removeEntry()">Remove Entry</button>
+        </div>
+        <div class="entry">
+        
         </div>
     </div>
     <footer>
