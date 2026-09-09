@@ -1,18 +1,15 @@
 <html>
     <head>
-        <title>Tic Tac Toe</title>
+        <title>technoshy the programming fox</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             body {
                 font-family: Arial, sans-serif;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
                 margin: 0;
                 padding: 0;
                 background-color: #f4f4f4;
             }
             header {
-                width: 100%;
                 background-color: #333;
                 color: #fff;
                 padding: 10px 0;
@@ -22,10 +19,11 @@
                 margin: 0;
                 padding: 0;
                 display: flex;
+                flex-wrap: wrap;
                 justify-content: center;
             }
             nav ul li {
-                margin: 0 15px;
+                margin: 5px 15px;
             }
             nav ul li a {
                 color: #fff;
@@ -34,148 +32,117 @@
             h1, h2 {
                 text-align: center;
             }
-            #game {
-                display: grid;
-                grid-template-columns: repeat(3, 100px);
-                grid-template-rows: repeat(3, 100px);
-                gap: 5px;
-            }
-            .cell {
-                width: 100px;
-                height: 100px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 2em;
+            .intro, .contact {
+                max-width: 600px;
+                margin: 20px auto;
+                padding: 20px;
                 background-color: #fff;
-                border: 1px solid #000;
-                cursor: pointer;
-            }
-            button {
-                margin-top: 20px;
-                margin-bottom: 20px;
-                padding: 10px 20px;
-                font-size: 1em;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             }
             footer {
-                width: 100%;
                 text-align: center;
                 padding: 10px 0;
                 background-color: #333;
-                color: #fff;
-                margin-top: auto;
+                color: #fff;            
             }
-
+            .journal {
+                max-width: 600px;
+                margin: 20px auto;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                box-sizing: border-box;
+            }
+            textarea {
+                width: 100%;
+                height: 150px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+            }
+            p {
+                text-align: center;
+            }
             @media (max-width: 600px) {
+                .intro, .contact, .journal {
+                    max-width: 100%;
+                    margin: 10px;
+                    padding: 15px;
+                }
                 nav ul {
                     flex-direction: column;
                     align-items: center;
                 }
                 nav ul li {
-                    margin: 8px 0;
-                }
-                h1, h2 {
-                    font-size: 1.4em;
-                    padding: 0 10px;
-                }
-                #game {
-                    grid-template-columns: repeat(3, 80px);
-                    grid-template-rows: repeat(3, 80px);
-                }
-                .cell {
-                    width: 80px;
-                    height: 80px;
-                    font-size: 1.6em;
+                    margin: 5px 0;
                 }
             }
-        </style>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="aiclub.html">AI Club</a></li>
-                    <li><a href="programmersclub.html">Programmers Club</a></li>
-                    <li><a href="todo.html">To-Do List</a></li>
-                    <li><a href="journal.html">Journal</a></li>
-                    <li><a href="calculator.html">Calculator</a></li>
-                    <li><a href="tictactoe.html">Tic Tac Toe</a></li>
-                </ul>
-            </nav>
-        </header>
-        <h1>Tic Tac Toe</h1>
-        <h2 id="status">
-            Player X's turn
-        </h2>
-        <div id="game">
-            <div class="row">
-                <div class="cell" data-index="0"></div>
-                <div class="cell" data-index="1"></div>
-                <div class="cell" data-index="2"></div>
-            </div>
-            <div class="row">
-                <div class="cell" data-index="3"></div>
-                <div class="cell" data-index="4"></div>
-                <div class="cell" data-index="5"></div>
-            </div>
-            <div class="row">
-                <div class="cell" data-index="6"></div>
-                <div class="cell" data-index="7"></div>
-                <div class="cell" data-index="8"></div>
-            </div>
-        </div>
-        <button id="reset">Reset Game</button>
-        <script>
-            const cells = document.querySelectorAll('.cell');
-            let currentPlayer = 'X';
-            const winningCombinations = [
-                [0, 1, 2],
-                [3, 4, 5],
-                [6, 7, 8],
-                [0, 3, 6],
-                [1, 4, 7],
-                [2, 5, 8],
-                [0, 4, 8],  
-                [2, 4, 6]
-            ];      
-            </script>
-        <script>
-            function checkWinner() {
-                for (const combination of winningCombinations) {
-                    const [a, b, c] = combination;
-                    if (cells[a].textContent && cells[a].textContent === cells[b].textContent && cells[a].textContent === cells[c].textContent) {
-                        alert(`Player ${                
-cells[a].textContent} wins!`);
-                        return true;
-                    }
-                }
-                return false;
+            button {
+                display: block;
+                margin: 10px auto;
+                padding: 10px 20px;
+                background-color: #333;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
             }
-            cells.forEach(cell => {
-                cell.addEventListener('click', () => {              
-                    if (!cell.textContent) {
-                        cell.textContent = currentPlayer;
-                        if (checkWinner()) {
-                            cells.forEach(c => c.removeEventListener('click', arguments.callee));
-                        } else {
-                            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                        }
-                    }
-                    document.getElementById('status').textContent = `Player ${currentPlayer}'s turn`;   
-                });
-            });
-            document.getElementById('reset').addEventListener('click', () => {
-                cells.forEach(cell => cell.textContent = '');
-                currentPlayer = 'X';
-                document.getElementById('status').textContent = `Player ${currentPlayer}'s turn`;
-            });
+            button:hover {
+                background-color: #555;
+            }
 
-        </script>
-        <footer>
-            <p>&copy; 2026 technoshy. All rights reserved.</p>
-        </footer>
-    </body>
+</style>
+<script>
+    // Function to handle the "Back" button click
+    function goBack() {
+        window.history.back();
+    }
+    function goForward() {
+        window.history.forward();
+    }
+    function addentry() {
+        var entry = document.getElementById("entry").value;
+        localStorage.setItem("journalEntry", entry);
+        alert("Journal entry saved!");
+        var savedEntry = localStorage.getItem("journalEntry");
+        var entryDisplay = document.createElement("p");
+        entryDisplay.textContent = savedEntry;
+        var footer = document.querySelector("footer");
+        footer.parentNode.insertBefore(entryDisplay, footer);
+    }
+    function removeEntry() {
+        localStorage.removeItem("journalEntry");
+        alert("Journal entry removed!");
+        var entryDisplay = document.querySelector("footer").previousElementSibling;
+        if (entryDisplay && entryDisplay.tagName === "P") {
+            entryDisplay.remove();
+        }
+    }
+</script>
+    </head>
+<body>
+    <header>
+        <h1>technoshy the programming fox</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="notes.html">Notes</a></li>
+                <li><a href="journey.html">Journey</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="journal">
+        <h1>Journal</h1>
+        <textarea id="entry" placeholder="Write your journal entry here..."></textarea>
+        <button onclick="addentry()">Add Entry</button>
+        <button onclick="removeEntry()">Remove Entry</button>
+    </div>
+    <footer>
+        <p>&copy; 2026 technoshy the programming fox</p>
+    </footer>
+</body>
+
 </html>
