@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Austin Heisley-Cook | Resume</title>
+    <style>
+      :root {
+        --bg: #f3f5f8;
+        --panel: #ffffff;
+        --sidebar: #122b42;
+        --sidebar-soft: #1c3c5d;
+        --primary: #1f5a8a;
+        --primary-soft: #dfeefb;
+        --text: #1f2430;
+        --muted: #5d6673;
+        --line: #dfe5ec;
+        --accent: #8ecae6;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: linear-gradient(135deg, #edf3f7 0%, #dfeaf3 100%);
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.5;
+      }
+
+      .page {
+        max-width: 1100px;
+        margin: 40px auto;
+        background: var(--panel);
+        box-shadow: 0 18px 40px rgba(17, 34, 52, 0.12);
+        display: grid;
+        grid-template-columns: 320px 1fr;
+      }
+
+      .sidebar {
+        background: var(--sidebar);
+        color: #edf5fb;
+        padding: 32px 24px;
+      }
+
+      .main {
+        padding: 34px 36px 22px 36px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 2.1rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        line-height: 1.1;
+      }
+
+      .title {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      .section {
+        margin-bottom: 22px;
+      }
+
+      .section h2 {
+        margin: 0 0 12px;
+        font-size: 0.82rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--primary);
+        border-bottom: 2px solid var(--line);
+        padding-bottom: 8px;
+      }
+
+      .sidebar .section h2 {
+        color: #dfeeff;
+        border-color: rgba(255,255,255,0.2);
+      }
+
+      .contact-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .contact-list li {
+        margin-bottom: 12px;
+        color: #dfeefb;
+        font-size: 0.95rem;
+      }
+
+      .skill-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 9px;
+      }
+
+      .skill-list li {
+        position: relative;
+        padding-left: 16px;
+        color: #edf5fb;
+      }
+
+      .skill-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 9px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+
+      .summary {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.98rem;
+      }
+
+      .job,
+      .project,
+      .edu {
+        margin-bottom: 18px;
+      }
+
+      .job-header,
+      .project-header,
+      .edu-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 4px;
+      }
+
+      .job-title,
+      .project-name,
+      .edu-name {
+        font-weight: 700;
+        color: var(--text);
+        font-size: 1.02rem;
+      }
+
+      .company,
+      .meta {
+        color: var(--muted);
+        font-size: 0.92rem;
+        font-weight: 600;
+      }
+
+      ul {
+        margin: 8px 0 0 18px;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 6px;
+        color: var(--text);
+        font-size: 0.96rem;
+      }
+
+      .subtle {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 850px) {
+        .page {
+          grid-template-columns: 1fr;
+          margin: 20px 12px;
+        }
+
+        .sidebar,
+        .main {
+          padding: 24px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <aside class="sidebar">
+        <div class="section">
+          <h2>Profile</h2>
+          <h1>Austin Heisley-Cook</h1>
+          <div class="title">Web Developer / IT Support Professional</div>
+        </div>
+
+        <div class="section">
+          <h2>Contact</h2>
+          <ul class="contact-list">
+            <li>818.426.1200</li>
+            <li>aheisleycook@gmail.com</li>
+            <li>Sherman Oaks, CA</li>
+            <li>github.com/afheisleycook</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>Core Skills</h2>
+          <ul class="skill-list">
+            <li>Python</li>
+            <li>C#</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>PHP</li>
+            <li>Laravel</li>
+            <li>Azure</li>
+            <li>GitHub</li>
+            <li>Visual Studio</li>
+            <li>VS Code</li>
+            <li>LibreOffice</li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="main">
+        <section class="section">
+          <h2>Summary</h2>
+          <p class="summary">
+            Web developer and IT support professional with experience in programming, campus technology support, operations, community management, and project coordination.
+            Skilled in Python, C#, HTML, CSS, JavaScript, PHP, and Azure-based workflow support. Brings a strong mix of technical problem-solving, communication, and process improvement experience to software and support-focused roles.
+          </p>
+        </section>
+
+        <section class="section">
+          <h2>Experience</h2>
+
+          <div class="job">
+            <div class="job-header">
+              <div>
+                <div class="job-title">EVGO Field Ops Intern</div>
+                <div class="company">Evgo</div>
+              </div>
+              <div class="meta">Dec 2022 – Feb 2023</div>
+            </div>
+            <ul>
+              <li>Programmed AMs in Python.</li>
+              <li>Participated in team meetings and supported operational workflows.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-header">
+              <div>
+                <div class="job-title">Back End Associate / Receiving Seasonal</div>
+                <div class="company">Macy's</div>
+              </div>
+              <div class="meta">Dec 2021 – Jan 2022</div>
+            </div>
+            <ul>
+              <li>Stripped plastic from clothing to prepare merchandise for floor sales.</li>
+              <li>Provided support when delivery trucks arrived by organizing freight and maintaining receiving operations.</li>
+              <li>Placed security tags on merchandise over $35 USD.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-header">
+              <div>
+                <div class="job-title">Office Support Intern</div>
+                <div class="company">Councilman Blumenfield's Office</div>
+              </div>
+              <div class="meta">Sep 2017 – Aug 2018</div>
+            </div>
+            <ul>
+              <li>Provided office support and rolled calls for LA City Council District 3, serving a population of 260,000.</li>
+              <li>Verified reports of illegal signage using Google Maps and Excel to support safe streets initiatives.</li>
+              <li>Scouted ADA-compliant venues for events to promote an inclusive administration.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-header">
+              <div>
+                <div class="job-title">Student Support Services Technician / Lab Tech Assistant</div>
+                <div class="company">Taft Community College</div>
+              </div>
+              <div class="meta">Aug 2013 – Jun 2016</div>
+            </div>
+            <ul>
+              <li>Named “Best Worker of the Year.”</li>
+              <li>Provided technology support for a college campus of 5,200 students.</li>
+              <li>Conducted computer maintenance for classrooms, staff workstations, and campus computer facilities.</li>
+              <li>Converted 1,000+ textbooks to alternative media using OCR to support students with disabilities.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Additional Projects</h2>
+
+          <div class="project">
+            <div class="project-header">
+              <div class="project-name">Project Manager / Community Manager</div>
+              <div class="meta">Mar 2020 – Nov 2020</div>
+            </div>
+            <div class="company">Dragon Programming Language</div>
+            <ul>
+              <li>Managed internal operations and documentation systems while supporting development processes.</li>
+              <li>Spearheaded the transition to GitHub, website redesign, and team restructuring.</li>
+              <li>Coded a text-to-speech library.</li>
+              <li>Managed an international team.</li>
+            </ul>
+          </div>
+
+          <div class="project">
+            <div class="project-header">
+              <div class="project-name">Group Admin and Moderator</div>
+              <div class="meta">2011 – Nov 2020</div>
+            </div>
+            <div class="company">Facebook and Discord</div>
+            <ul>
+              <li>Moderated communities focused on computers, programming, and autism support.</li>
+              <li>Managed a total enrollment of over 1,000,000 people.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Education</h2>
+          <div class="edu">
+            <div class="edu-header">
+              <div class="edu-name">Web Developer Associate</div>
+              <div class="meta">Santa Monica, CA</div>
+            </div>
+            <div class="company">Santa Monica College</div>
+          </div>
+
+          <div class="edu">
+            <div class="edu-header">
+              <div class="edu-name">Azure Programming Certification</div>
+              <div class="meta">Santa Monica, CA</div>
+            </div>
+            <div class="company">Santa Monica College</div>
+          </div>
+
+          <div class="edu">
+            <div class="edu-header">
+              <div class="edu-name">.NET Programming Certification</div>
+              <div class="meta">North Hollywood, CA</div>
+            </div>
+            <div class="company">Los Angeles Valley College</div>
+          </div>
+
+          <div class="edu">
+            <div class="edu-header">
+              <div class="edu-name">Information Technology and Management Certification</div>
+              <div class="meta">Bakersfield, CA</div>
+            </div>
+            <div class="company">Taft Community College</div>
+          </div>
+
+          <div class="edu">
+            <div class="edu-header">
+              <div class="edu-name">High School Diploma</div>
+              <div class="meta">Pasadena, CA</div>
+            </div>
+            <div class="company">Frostig School</div>
+          </div>
+
+          <div class="edu">
+            <div class="edu-header">
+              <div class="edu-name">Dean's List</div>
+              <div class="meta">Spring 2019</div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
